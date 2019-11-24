@@ -1,0 +1,11 @@
+/**
+* identify_home.css is used to provide css to the navigation button acording to the user selection
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Allerta+Stencil");
+
+#topheader .navbar-nav li.active > a {
+	background-color:rgba(8, 10, 40, 0.75);;
+	color: white;
+	padding-left: 5px;
+}

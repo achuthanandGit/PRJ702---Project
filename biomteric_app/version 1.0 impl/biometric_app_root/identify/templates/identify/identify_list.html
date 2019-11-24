@@ -1,0 +1,112 @@
+<!-- Extending 'index.html' as parent page-->
+{% extends "index.html" %}
+
+<!-- Tag to load static files-->
+{% load static %}
+
+<!-- Custom title for upload list Page-->
+{% block title %}
+    Identified List
+{% endblock title %}
+
+<!-- Custom content -->
+{% block content %}
+
+<!-- table div to show upload list -->
+<div class="row align-items-center table-responsive">
+    
+    <!-- table div heading -->
+    <div class="block-heading">
+        <h2 style="font-family: 'Allerta Stencil', sans-serif;font-size: 40px;">Uploaded List</h2>
+    </div>
+    <table id="table-identify-list" class="table table-hover table-dark">
+        <!-- Column headers -->
+        <thead>
+            <tr class="table-header">
+                <th scope="col">Id</th>
+                <th scope="col">Image</th>
+                <th scope="col">Population</th>
+                <th scope="col">Submitted Date</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <!-- row data -->
+        <tbody>
+            <!-- loop to load upload list -->
+            {% for identify in all_identifys %}
+                <tr>
+                    <td> {{ identify.imageId }} </td>
+                    <td> <img class="img" src= "{{ identify.image.url }}" width="30" height="30"> </td>
+                    <td> {{ identify.population }} </td>
+                    <td> {{ identify.submitted|date:'d-m-y' }} </td>
+                    <td>
+                            <!-- condition to decide which stats image should load -->
+                            {% if identify.status == 'Running process' %}
+                                <img class="img" src= "../../../static/img/table/wait.png" width="30" height="30">
+                            {% else %}
+                                <img class="img" src= "../../../static/img/table/done.png" width="30" height="30">
+                            {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        {% csrf_token %}
+    </table>
+</div>
+
+<!-- modal to load the match result when a row is clicked -->
+<div class="modal fade" id="details-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <!-- Modal content div -->
+        <div class="modal-content">
+            <!-- Modal header div -->
+            <div class="modal-header">
+                <h5 style="font-family: 'Allerta Stencil', sans-serif;font-size: 25px;">Match Details</h5>
+                <button id='re-check-button' type='submit' class='btn btn-link'>Try Again</button>
+            </div>
+            <!-- Modal boady div -->
+            <div class="modal-body">
+                <!-- div to show how manu matches found -->
+                <div id="match-details"></div>
+                <!-- div to show if there is no match found -->
+                <div id="modal-result"></div>
+                
+                <!-- div to load images of matching items -->
+                <div id="carousel" class="caraousal slide" data-ride="carousel" data-interval="false">
+                    <!--  Indicators --> 
+                    <ol id="indicators" class="carousel-indicators"></ol>
+                    <!-- Wrapper for slides -->
+                    <div id="inner-items" class="carousel-inner"></div>
+                    <!--  Controls - Previous-->
+                    <a class="prev carousel-control-prev" data-slide="prev" role="button">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <!--  Controls - Next-->
+                    <a class="next carousel-control-next" data-slide="next" role="button">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+                <!-- div to load match image details -->
+                <div id="match-data" class="match-view">
+                    <!-- table to load match data -->
+                    <table id="table-match-data" class="table table-hover table-dark"></table></table>
+                </div>
+            </div>
+            <!-- Modal footer div -->
+            <div class="modal-footer">
+                <!-- Button to close the modal -->
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- To load page specific js and required page related CDN -->
+{% block scriptLoad %}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src = "{% static 'js/identifyList.js' %}"></script>
+{% endblock scriptLoad %}
+    

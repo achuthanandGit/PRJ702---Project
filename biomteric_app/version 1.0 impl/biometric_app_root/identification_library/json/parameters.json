@@ -1,0 +1,8 @@
+{
+    "fish_perm_min": 50,
+    "fish_perm_max": 1000,
+    "fish_quality": 1.5,
+    "match_perm": 0,
+    "match_quality": 12,
+    "standard_height": 1000
+}

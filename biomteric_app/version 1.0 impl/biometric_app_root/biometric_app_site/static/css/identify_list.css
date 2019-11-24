@@ -1,0 +1,49 @@
+/**
+* identify_list.css is used to provide styles to the upload list table, table page navigations,
+* filters and search functionalities
+*/
+
+.dataTables_length, .dataTables_filter, .dataTables_info, .dataTables_paginate {
+    font-family: 'Allerta Stencil', sans-serif;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 1.5em;
+    padding: 0.5em 1em;
+    margin-left: 2px;
+    text-align: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    cursor: hand;
+    color: #333 !important;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+.current {
+    background-color: #cacaff; 
+}
+
+.table-header {
+	color: black;
+	background: white;
+}
+
+.match-view {
+    padding-top: 20px;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    height: 22%;
+    text-align: center;
+    opacity: .5;
+}

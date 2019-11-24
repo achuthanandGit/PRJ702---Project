@@ -1,0 +1,111 @@
+<!-- Extending 'index.html' as parent page-->
+{% extends "index.html" %}
+
+<!-- Tag to load static files-->
+{% load static %}
+
+<!-- Custom title for form Page-->
+{% block title %}
+    PFR Fish Identify
+{% endblock title %}
+
+<!-- Content section to show form for uploading the image to identify-->
+{% block content %}
+
+<!-- Form heading -->
+<div class="block-heading">
+    <h2 style="font-family: 'Allerta Stencil', sans-serif;font-size: 40px;">Upload &amp; Identify</h2>
+</div>
+
+<!-- Modal for showing successfull submission when Identify button is clicked -->
+<div class="modal fade" id="submit-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h7 class="modal-title">Data submitted successfully.</br>
+                    Results can be viewed in the 'Upload List' section.</h7>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for showing warning when user tries to reload, refresh or uses back or front navigation using 
+    browser or keyboard -->
+<div class="modal fade" id="alert-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h7 class="modal-title">Not Allowed.</br>
+                    Background process in progress. Page not allowed to load until it finish.</h7>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- div showing the image upload/preview area and upload form -->
+<div class="row align-items-center">
+    <div class="col-md-6">
+        <!-- Upload div -->
+        <div class="row">
+            <div class="upload-drop-zone" id="drop-zone">
+                    Just drag and drop files here
+            </div>
+        </div>
+        <!-- Preview div -->
+        <div class="row">
+            <img id ="img_id" class="center img-responsive">
+        </div>
+    </div>
+    <!-- Upload form div -->
+    <div class="col-md-6">
+        <div class="getting-started-info">                 
+            <div id="form-id" class="form-div clean-block clean-form dark form-div">
+                <form action="" id="identify_form" enctype="multipart/form-data" method="post" novalidate>
+                    <table>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><label id="required_error_id" class="validation_error">Please fill the required fields.</label></td>
+                        </tr>
+                        {{ form.as_table }}
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><button id="identify_btn_id" type="submit"  class="btn btn-primary disabled" disabled="disabled">Identify</button></td>
+                        </tr>
+                    </table>
+                    <div id="results"></div>
+                    {% csrf_token %}
+                </form>
+            </div>
+            
+            <!-- Loader div. Currently disable. Later will be used -->
+            <div id="loading-id" class="loading-div clean-block clean-form dark">
+                <div id="preloader">
+                    <div id="loader"></div>
+                </div>
+            </div>
+
+            <!-- Result div. Currently disable. Later will be used -->
+            <div id="result-id" class="result-div clean-block clean-form dark">
+                <ul id="result-list" class='list-group'></ul>
+            <!-- Try again section. Currently disabled. Later will be used -->
+            <!-- <ul class='list-group'>
+                <li class='list-group-item'>
+                        <button id='try_again_id' type='submit' class='btn btn-primary'>Try Another</button>
+                </li>
+                </ul> -->
+            </div> 
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- To load page specific js -->
+{% block scriptLoad %}
+    <script src = "{% static 'js/identifyForm.js' %}"></script>
+{% endblock scriptLoad %}
+    
+    

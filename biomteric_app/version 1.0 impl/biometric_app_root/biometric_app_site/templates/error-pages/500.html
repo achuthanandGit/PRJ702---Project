@@ -1,0 +1,22 @@
+<!-- Extending 'index.html' as parent page-->
+{% extends "index.html" %}
+
+<!-- Custom title for 500-->
+{% block title %}
+    500 Error
+{% endblock title %}
+
+<!-- Custom content for 500 page -->
+{% block content %}
+<div class="site">
+	<div class="sketch">
+		<div class="bee-sketch red"></div>
+		<div class="bee-sketch blue"></div>
+	</div>
+
+    <h1 class="title">500:
+        <small>Server Issue</small>
+        <small class="desc">Please try again.</small>
+    </h1>
+</div>
+{% endblock content %}

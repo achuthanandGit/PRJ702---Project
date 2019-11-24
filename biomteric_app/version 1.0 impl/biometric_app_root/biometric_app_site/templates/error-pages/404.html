@@ -1,0 +1,22 @@
+<!-- Extending 'index.html' as parent page-->
+{% extends "index.html" %}
+
+<!-- Custom title for 404 -->
+{% block title %}
+    404 Error
+{% endblock title %}
+
+<!-- Custom content for 404 page -->
+{% block content %}
+<div class="site">
+	<div class="sketch">
+		<div class="bee-sketch red"></div>
+		<div class="bee-sketch blue"></div>
+	</div>
+
+    <h1 class="title">404:
+        <small>Page Not Found</small>
+        <small class="desc">Please try again with valid url or use navigation menu.</small>
+    </h1>
+</div>
+{% endblock content %}

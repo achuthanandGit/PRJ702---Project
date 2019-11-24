@@ -1,0 +1,100 @@
+<!-- Tag to load static files-->
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- Setting the title for pages -->
+    <title>
+        {% block title %}
+            PFR Biometric App
+        {% endblock title %}
+    </title>
+
+    <!-- Mapping static CSS files -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/identify_form.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/identify_home.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/identify_list.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/404.css' %}" type="text/css">
+    
+    <!-- Connecting required CDN of CSS files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- Setting page header and navigation buttons. Common to all pages-->
+    <div id="topheader">
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top clean-navbar" style="background-color: #ffffff;">
+            <div class="container"><a class="navbar-brand text-left shadow-none d-inline-block float-left flex-grow-1 flex-shrink-1 flex-wrap visible wobble animated logo" href="#" style="width: 371px;padding: 5px 5px;font-family: 'Allerta Stencil', sans-serif;font-size: 30px;">Plant & Food Research Limited</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li id="identify-nav-btn" class="nav-item" role="presentation"><a class="nav-link wobble animated" href="/identify/" style="font-family: 'Allerta Stencil', sans-serif;">Home</a></li>
+                        <li id="identfy-list-nav-btn" class="nav-item" role="presentation"><a class="nav-link wobble animated" href="/identify/identify_list/" style="font-family: 'Allerta Stencil', sans-serif;">Upload List</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Setting page contents -->
+    <div id="body-content" style="padding-top: 75px;">
+        <main class="page landing-page">
+            <!-- condition to re-use the same styles for all pages -->
+            {% if 'identify_list' not in request.path %}
+            <section class="clean-block clean-hero" style="background-image:url(&quot;../static/img/tech/image4.jpg&quot;);color:rgba(8, 10, 40, 0.65);">
+                <div class="text">
+                    <h2 style="font-family: 'Allerta Stencil', sans-serif;">Upload &amp; Identify Fish</h2>
+                    <p style="font-family: 'Allerta Stencil', sans-serif;filter: brightness(200%) contrast(137%) grayscale(0%) hue-rotate(0deg) invert(0%) saturate(123%);opacity: 0.71;">Here we the PFR introduces the facility to know about the fish features just by uploading a picture. &nbsp;Once the system runs special tasks on the picture, it will show the details of fish.</p>
+                    <a class="btn btn-outline-light btn-lg" role="button" href="https://iplant.plantandfood.co.nz/" data-bs-hover-animate="flash" style="font-family: 'Allerta Stencil', sans-serif;">Learn About PFR</a>
+                </div>
+            </section>
+            {% endif %}
+
+           
+            <!-- Section to load the page content  -->
+            <section class="clean-block clean-info dark">
+                <div class="container">
+                    {% block content %}
+    
+                    {% endblock content %}
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- To load the page footer. Common to all pages -->
+    <footer class="page-footer dark">
+        <div class="footer-copyright">
+            <p>Copyright © 2019 The New Zealand Institute for Plant and Food Research Limited</p>
+        </div>
+    </footer>
+
+    <!-- Mapping for required CDN scripts. Common to all pages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+
+
+    <!-- Mapping static scripts required for the home page-->
+    <script src = "{% static 'js/script.min.js' %}"></script>
+    <script src = "{% static 'js/identifyHome.js' %}"></script>
+
+    <!-- Block to map page specific scripts (both static as well as CDN)-->
+    {% block scriptLoad %}
+
+    {% endblock scriptLoad %}
+    
+</body>
+</html>

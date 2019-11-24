@@ -1,0 +1,174 @@
+/**
+* identify_form.css is used to provide css to the upload fish image form, related validations
+* and components
+**/
+
+@import url("https://fonts.googleapis.com/css?family=Allerta+Stencil");
+
+.errorlist li{
+	border: 1px solid red;
+	color: red;
+	background: rgba(255, 0, 0, 0.15);
+	list-style-position: inside;
+	display: inherit;
+	font-size: 1em;
+	margin: 0 0 3px;
+	text-align: center;
+	border-radius: 5px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.errorlist {
+	padding-top: 8px;
+}
+
+input, textarea {
+	width: 100%;
+	padding: 0px !important;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 3px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(169, 169, 169);
+}
+
+input {
+	height: 32px;
+}
+
+.required label:after {
+	content: "*";
+	color: red;
+	size: 0.5em;
+}
+
+.required th{
+	padding-right: 15px;
+	text-align: left;
+}
+
+.required{
+	padding-top: 10px;
+}
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	padding-bottom: 10px;
+  }
+
+button {
+	align-items: center;
+}
+
+.validation_error  {
+	display: none;
+	color: red;
+	border: 1px solid red;
+	background: rgba(255, 0, 0, 0.15);
+	text-align: center;
+	font-size: 1em;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	margin: 0 0 3px;
+	border-radius: 5px;
+}
+
+.result-div {
+	display: none;
+}
+
+.loading-div {
+	display: none;
+}
+
+#preloader {
+	padding-top: 100px;
+}
+#loader {
+	display: block;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	width: 150px;
+	height: 150px;
+	margin: -75px 0 0 -75px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #9370DB;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+}
+#loader:before {
+	content: "";
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	right: 5px;
+	bottom: 5px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #BA55D3;
+	-webkit-animation: spin 3s linear infinite;
+	animation: spin 3s linear infinite;
+}
+#loader:after {
+	content: "";
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	right: 15px;
+	bottom: 15px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #FF00FF;
+	-webkit-animation: spin 1.5s linear infinite;
+	animation: spin 1.5s linear infinite;
+}
+@-webkit-keyframes spin {
+	0%   {
+		-webkit-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes spin {
+	0%   {
+		-webkit-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+.upload-drop-zone {
+	height: 200px;
+	width: 100%;
+	border-width: 2px;
+	margin-bottom: 20px;
+	font-family: 'Allerta Stencil', sans-serif;
+	color: rgb(151, 148, 148);
+	border-style: dashed;
+	border-color: #ccc;
+	line-height: 200px;
+	text-align: center
+  }
+
+  .upload-drop-zone.drop {
+	font-family: 'Allerta Stencil', sans-serif;
+	color: rgb(13, 102, 13);
+	border-color: rgb(112, 112, 236);
+  }
+  
